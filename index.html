@@ -4,87 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alfred's 70th Birthday Celebration</title>
+
+    <!-- Velvee Beauty Fonts — exact match from master CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ══════════════════════════════════════════
+           VELVEE BEAUTY DESIGN TOKENS — exact copy
+        ══════════════════════════════════════════ */
+        :root {
+            /* Brand Colors */
+            --gold:        #B8965A;
+            --gold-light:  #D4AE78;
+            --gold-dark:   #8A6E28;
+            --gold-soft:   rgba(184,150,90,0.12);
+            --black:       #1a1a1a;
+            --white:       #ffffff;
+            --cream:       #FAF7F2;
+            --beige-bg:    #faf8f3;
+            --gray-light:  #f7f6f2;
+            --gray-mid:    #e8e6e0;
+            --gray-line:   #e0ddd6;
+            --text-muted:  #888580;
+
+            /* Typography */
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'Jost', 'Helvetica Neue', sans-serif;
+            --font-ui:      'Montserrat', sans-serif;
+
+            /* Misc */
+            --radius:     4px;
+            --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* GLOBAL — from Velvee master CSS */
         body {
-            font-family: 'Jost', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
+            background: var(--cream);
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--black);
+            letter-spacing: 0.3px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 300;
+            color: var(--black);
+            line-height: 1.15;
         }
 
         /* ── ANNOUNCEMENT BAR ── */
         .announcement-bar {
-            background-color: #000000;
-            color: #ffffff;
+            background: var(--black);
+            color: rgba(255,255,255,0.55);
+            font-family: var(--font-ui);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
             text-align: center;
-            padding: 11px 20px;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            padding: 12px 24px;
         }
 
-        .announcement-bar a {
-            color: #e91e8c;
-            text-decoration: underline;
-            font-weight: 600;
+        .announcement-bar em {
+            color: var(--gold-light);
+            font-style: normal;
         }
 
         /* ── HEADER ── */
         .header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #ebebeb;
-            padding: 0 48px;
+            background: var(--cream);
+            border-bottom: 1px solid var(--gray-line);
+            padding: 0 56px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 72px;
+            height: 80px;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .header-logo {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #000000;
-            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--black);
             text-decoration: none;
+            text-transform: uppercase;
         }
 
-        .header-logo span {
-            color: #e91e8c;
+        .header-logo i {
+            color: var(--gold);
+            font-style: italic;
         }
 
         .header-nav {
             display: flex;
-            gap: 36px;
+            gap: 40px;
             list-style: none;
         }
 
         .header-nav a {
-            text-decoration: none;
-            color: #333333;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-family: var(--font-ui);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            transition: color 0.2s;
-            padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.65;
+            transition: var(--transition);
         }
 
         .header-nav a:hover {
-            color: #e91e8c;
-            border-bottom-color: #e91e8c;
+            color: var(--gold);
+            opacity: 1;
         }
 
         .header-icons {
@@ -94,588 +136,632 @@
         }
 
         .header-icon {
+            font-size: 17px;
             cursor: pointer;
-            font-size: 19px;
-            color: #333333;
-            transition: color 0.2s;
+            color: var(--black);
+            opacity: 0.55;
+            transition: var(--transition);
         }
 
-        .header-icon:hover {
-            color: #e91e8c;
-        }
+        .header-icon:hover { color: var(--gold); opacity: 1; }
 
         /* ── HERO ── */
         .hero {
-            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 55%, #2d1b2e 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 110px 48px 110px;
+            background: var(--beige-bg);
+            border-bottom: 1px solid var(--gray-line);
             display: flex;
             align-items: center;
+            gap: 60px;
             min-height: 560px;
+            padding: 80px 56px;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Velvee-style inset frame line */
         .hero::before {
             content: '';
             position: absolute;
-            top: -40%;
-            right: -5%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(233,30,140,0.14) 0%, transparent 65%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            left: -5%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(233,30,140,0.07) 0%, transparent 65%);
+            inset: 28px;
+            border: 1px solid rgba(184,150,90,0.13);
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 600px;
+            flex: 1;
+            max-width: 580px;
             position: relative;
             z-index: 1;
         }
 
-        .hero-tag {
-            display: inline-block;
-            background-color: #e91e8c;
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+        /* Flanked eyebrow — Velvee signature pattern */
+        .eyebrow-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .eyebrow-rule {
+            flex: 0 0 36px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.45;
+        }
+
+        .eyebrow-text {
+            font-family: var(--font-ui);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 5px 14px;
-            margin-bottom: 24px;
+            color: var(--gold);
+            white-space: nowrap;
         }
 
         .hero-title {
-            font-size: 62px;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
-        }
-
-        .hero-title span {
-            color: #e91e8c;
-        }
-
-        .hero-subtitle {
-            font-size: 17px;
+            font-family: var(--font-heading);
+            font-size: 74px;
             font-weight: 300;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 40px;
-            line-height: 1.7;
+            color: var(--black);
+            line-height: 1.04;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero-title i {
+            color: var(--gold);
+        }
+
+        .hero-event-name {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            margin-bottom: 28px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 44px;
+            max-width: 420px;
         }
 
         .hero-cta {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background-color: #e91e8c;
-            color: #ffffff;
+        /* ── BUTTONS ── */
+        .btn-gold {
+            background: var(--gold);
+            color: var(--white);
             border: none;
-            padding: 16px 38px;
-            font-family: 'Jost', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.15s;
-        }
-
-        .btn-primary:hover {
-            background-color: #c01070;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 16px 38px;
-            font-family: 'Jost', sans-serif;
-            font-size: 12px;
+            padding: 14px 36px;
+            font-family: var(--font-ui);
+            font-size: 10px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: border-color 0.2s, background-color 0.2s;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: inline-block;
         }
 
-        .btn-secondary:hover {
-            border-color: #ffffff;
-            background-color: rgba(255,255,255,0.08);
+        .btn-gold:hover { background: var(--gold-dark); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--gray-line);
+            padding: 14px 36px;
+            font-family: var(--font-ui);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: var(--transition);
         }
 
-        /* Date badge floating right */
-        .hero-date-badge {
-            position: absolute;
-            right: 96px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.12);
-            backdrop-filter: blur(12px);
-            padding: 34px 40px;
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Hero date panel */
+        .hero-date-panel {
+            width: 230px;
+            flex-shrink: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-line);
+            padding: 40px 30px;
             text-align: center;
+            position: relative;
             z-index: 1;
         }
 
-        .hero-date-badge .badge-month {
-            font-size: 11px;
-            color: #e91e8c;
-            font-weight: 700;
+        /* Inner inset frame */
+        .hero-date-panel::before {
+            content: '';
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(184,150,90,0.18);
+            pointer-events: none;
+        }
+
+        .panel-label {
+            font-family: var(--font-ui);
+            font-size: 8px;
+            font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
         }
 
-        .hero-date-badge .badge-day {
-            font-size: 72px;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1;
-            margin: 10px 0 6px;
-        }
-
-        .hero-date-badge .badge-year {
-            font-size: 15px;
-            color: rgba(255,255,255,0.5);
+        .panel-day {
+            font-family: var(--font-heading);
+            font-size: 84px;
             font-weight: 300;
-            letter-spacing: 2px;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 4px;
         }
 
-        .hero-date-badge .badge-time {
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 14px;
-            color: #ffffff;
+        .panel-month {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .panel-year {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 4px;
+            margin-bottom: 22px;
+        }
+
+        .panel-divider {
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.35;
+            margin: 0 auto 22px;
+        }
+
+        .panel-time {
+            font-family: var(--font-ui);
+            font-size: 10px;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            color: var(--black);
+            letter-spacing: 1.5px;
         }
 
-        /* ── HIGHLIGHTS BAR ── */
-        .highlights-bar {
-            background-color: #f5f5f5;
-            border-bottom: 1px solid #e8e8e8;
-            padding: 0 48px;
+        /* ── HIGHLIGHTS STRIP ── */
+        .highlights-strip {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-line);
             display: flex;
             justify-content: center;
-            gap: 56px;
             flex-wrap: wrap;
         }
 
-        .highlight-item {
+        .hi-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 18px 0;
-            font-size: 12px;
+            padding: 18px 36px;
+            border-right: 1px solid var(--gray-line);
+            font-family: var(--font-ui);
+            font-size: 9px;
             font-weight: 600;
-            color: #333333;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            color: var(--black);
         }
 
-        .highlight-item .hi-icon {
-            font-size: 17px;
-        }
+        .hi-item:last-child { border-right: none; }
 
-        /* ── DETAIL CARDS ── */
-        .section-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 48px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 54px;
-        }
-
-        .section-label {
-            display: inline-block;
+        .hi-item .hi-dot {
+            color: var(--gold);
             font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #e91e8c;
-            margin-bottom: 14px;
         }
 
-        .section-title {
-            font-size: 38px;
-            font-weight: 700;
-            color: #000000;
-            letter-spacing: -0.8px;
+        /* ── SECTION SHARED ── */
+        .section-wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 90px 56px;
         }
 
-        .detail-cards {
+        .section-head {
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .section-head .eyebrow-row {
+            justify-content: center;
+        }
+
+        .section-head h2 {
+            font-family: var(--font-heading);
+            font-size: 44px;
+            font-weight: 300;
+            color: var(--black);
+            letter-spacing: -0.5px;
+        }
+
+        .section-head h2 i {
+            color: var(--gold);
+        }
+
+        /* ── DETAIL CARDS — flush grid, Velvee style ── */
+        .detail-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 1px;
+            background: var(--gray-line);
+            border: 1px solid var(--gray-line);
         }
 
         .detail-card {
-            background-color: #ffffff;
-            border: 1px solid #e8e8e8;
-            padding: 40px 28px;
+            background: var(--white);
+            padding: 46px 30px;
             text-align: center;
-            transition: box-shadow 0.25s, transform 0.25s;
-            cursor: default;
+            transition: var(--transition);
         }
 
-        .detail-card:hover {
-            box-shadow: 0 10px 48px rgba(0,0,0,0.09);
-            transform: translateY(-5px);
-        }
+        .detail-card:hover { background: var(--gray-light); }
 
-        .detail-card .dc-icon {
-            font-size: 34px;
-            margin-bottom: 20px;
-            display: block;
-        }
+        .dc-icon { font-size: 22px; margin-bottom: 20px; display: block; opacity: 0.75; }
 
-        .detail-card .dc-label {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #e91e8c;
-            margin-bottom: 12px;
-        }
-
-        .detail-card .dc-value {
-            font-size: 18px;
+        .dc-label {
+            font-family: var(--font-ui);
+            font-size: 9px;
             font-weight: 600;
-            color: #000000;
-            line-height: 1.4;
-            margin-bottom: 6px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
         }
 
-        .detail-card .dc-sub {
-            font-size: 13px;
-            color: #999999;
-            font-weight: 400;
+        .dc-value {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--black);
+            line-height: 1.3;
+            margin-bottom: 8px;
         }
 
-        /* ── ACTIVITIES SECTION ── */
+        .dc-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* ── ACTIVITIES ── */
         .activities-section {
-            background-color: #000000;
-            padding: 80px 48px;
+            background: var(--beige-bg);
+            border-top: 1px solid var(--gray-line);
+            border-bottom: 1px solid var(--gray-line);
+            padding: 90px 56px;
         }
 
-        .activities-section .section-label {
-            color: #e91e8c;
-        }
-
-        .activities-section .section-title {
-            color: #ffffff;
-        }
+        .activities-inner { max-width: 1160px; margin: 0 auto; }
 
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 1px;
+            background: var(--gray-line);
+            border: 1px solid var(--gray-line);
             margin-top: 0;
         }
 
-        .activity-item {
-            background-color: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 30px 32px;
+        .activity-card {
+            background: var(--cream);
+            padding: 36px 40px;
             display: flex;
             align-items: flex-start;
-            gap: 22px;
-            transition: background-color 0.2s, border-color 0.2s;
-            cursor: default;
+            gap: 24px;
+            transition: var(--transition);
         }
 
-        .activity-item:hover {
-            background-color: rgba(233,30,140,0.09);
-            border-color: rgba(233,30,140,0.3);
-        }
+        .activity-card:hover { background: var(--white); }
 
-        .activity-item .ai-icon {
-            font-size: 28px;
+        .activity-icon {
+            width: 48px;
+            height: 48px;
             flex-shrink: 0;
-            margin-top: 2px;
+            border: 1px solid var(--gray-line);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
         }
 
-        .activity-item .ai-text h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
+        .activity-card:hover .activity-icon { border-color: var(--gold); }
 
-        .activity-item .ai-text p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
+        .activity-text h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
             font-weight: 300;
-            line-height: 1.6;
+            color: var(--black);
+            margin-bottom: 8px;
         }
 
-        /* ── LOCATION SECTION ── */
+        .activity-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        /* ── LOCATION ── */
         .location-section {
-            background-color: #f5f5f5;
-            padding: 80px 48px;
+            background: var(--white);
+            padding: 90px 56px;
         }
 
         .location-inner {
-            max-width: 1200px;
+            max-width: 1160px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 70px;
+            gap: 80px;
             align-items: center;
         }
 
-        .location-map-placeholder {
-            background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
-            height: 320px;
+        .map-placeholder {
+            background: var(--gray-light);
+            border: 1px solid var(--gray-line);
+            height: 340px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 1px solid #cccccc;
-            gap: 12px;
-            color: #888;
-            font-size: 13px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            gap: 14px;
+            color: var(--text-muted);
+        }
+
+        .map-placeholder span { font-size: 38px; opacity: 0.45; }
+
+        .map-placeholder p {
+            font-family: var(--font-ui);
+            font-size: 9px;
             font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
         }
 
-        .location-map-placeholder .map-icon {
-            font-size: 48px;
-        }
-
-        .location-details .section-label {
-            display: block;
-            margin-bottom: 14px;
-        }
+        .location-details .eyebrow-row { justify-content: flex-start; margin-bottom: 18px; }
 
         .location-details h2 {
-            font-size: 34px;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
+            font-family: var(--font-heading);
+            font-size: 40px;
+            font-weight: 300;
+            color: var(--black);
+            margin-bottom: 18px;
         }
 
-        .location-details .loc-address {
-            font-size: 18px;
-            color: #333333;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .location-details .loc-city {
-            font-size: 15px;
-            color: #999999;
-            margin-bottom: 34px;
+        .loc-address {
+            font-size: 16px;
             font-weight: 400;
+            color: var(--black);
+            margin-bottom: 4px;
         }
 
-        .btn-dark {
-            display: inline-block;
-            background-color: #000000;
-            color: #ffffff;
-            border: none;
-            padding: 15px 32px;
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
+        .loc-city {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 36px;
         }
 
-        .btn-dark:hover {
-            background-color: #333333;
-        }
-
-        /* ── RSVP SECTION ── */
+        /* ── RSVP ── */
         .rsvp-section {
-            background: linear-gradient(135deg, #e91e8c 0%, #b5006a 100%);
-            padding: 90px 48px;
+            background: var(--black);
+            padding: 100px 56px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .rsvp-section::before {
+            content: '';
+            position: absolute;
+            inset: 28px;
+            border: 1px solid rgba(184,150,90,0.13);
+            pointer-events: none;
+        }
+
+        .rsvp-section .eyebrow-row {
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .rsvp-section .eyebrow-text { color: var(--gold-light); }
+        .rsvp-section .eyebrow-rule { background: var(--gold-light); }
 
         .rsvp-section h2 {
-            font-size: 46px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 14px;
-            letter-spacing: -1px;
+            font-family: var(--font-heading);
+            font-size: 54px;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 18px;
         }
 
+        .rsvp-section h2 i { color: var(--gold-light); }
+
         .rsvp-section p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 44px;
+            font-size: 15px;
             font-weight: 300;
-            line-height: 1.6;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.75;
+            margin-bottom: 52px;
         }
 
         .btn-rsvp {
-            background-color: #ffffff;
-            color: #e91e8c;
+            background: var(--gold);
+            color: var(--white);
             border: none;
-            padding: 20px 60px;
-            font-family: 'Jost', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            padding: 18px 60px;
+            font-family: var(--font-ui);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.2s;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
         }
 
-        .btn-rsvp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.2);
-        }
+        .btn-rsvp:hover { background: var(--gold-light); }
 
         /* ── FOOTER ── */
         .footer {
-            background-color: #0d0d0d;
-            padding: 64px 48px 30px;
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 70px 56px 32px;
         }
 
         .footer-top {
-            max-width: 1200px;
+            max-width: 1160px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.6fr 1fr 1fr 1fr;
-            gap: 50px;
-            padding-bottom: 54px;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 58px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
-        .footer-brand-logo {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #ffffff;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .footer-brand-logo span {
-            color: #e91e8c;
-        }
-
-        .footer-brand-desc {
-            font-size: 14px;
-            line-height: 1.75;
-            color: rgba(255,255,255,0.4);
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 20px;
             font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--white);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo i { color: var(--gold); }
+
+        .footer-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            font-weight: 300;
+            line-height: 1.85;
         }
 
         .footer-col h4 {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            font-family: var(--font-ui);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 22px;
+            color: var(--gold-light);
+            margin-bottom: 24px;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
+        .footer-col ul { list-style: none; }
 
-        .footer-col ul li {
-            margin-bottom: 13px;
-        }
+        .footer-col ul li { margin-bottom: 13px; }
 
         .footer-col ul li a {
-            font-size: 14px;
-            color: rgba(255,255,255,0.45);
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
             text-decoration: none;
             font-weight: 300;
-            transition: color 0.2s;
+            transition: var(--transition);
         }
 
-        .footer-col ul li a:hover {
-            color: #e91e8c;
-        }
+        .footer-col ul li a:hover { color: var(--gold-light); }
 
         .footer-bottom {
-            max-width: 1200px;
+            max-width: 1160px;
             margin: 0 auto;
             padding-top: 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.3);
         }
 
-        .social-links {
-            display: flex;
-            gap: 12px;
+        .footer-copy {
+            font-family: var(--font-ui);
+            font-size: 9px;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
+
+        .social-links { display: flex; gap: 10px; }
 
         .social-link {
-            width: 34px;
-            height: 34px;
-            border: 1px solid rgba(255,255,255,0.12);
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            font-family: var(--font-ui);
+            font-size: 10px;
             font-weight: 700;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255,255,255,0.3);
             text-decoration: none;
-            transition: border-color 0.2s, color 0.2s;
+            border-radius: var(--radius);
+            transition: var(--transition);
         }
 
-        .social-link:hover {
-            border-color: #e91e8c;
-            color: #e91e8c;
-        }
+        .social-link:hover { border-color: var(--gold); color: var(--gold); }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
-            .hero { padding: 70px 24px; min-height: auto; }
-            .hero-date-badge { display: none; }
-            .hero-title { font-size: 44px; }
-            .detail-cards { grid-template-columns: 1fr; }
+        @media (max-width: 960px) {
+            .hero { flex-direction: column; padding: 60px 28px; min-height: auto; }
+            .hero::before { inset: 14px; }
+            .hero-date-panel { width: 100%; max-width: 260px; }
+            .detail-grid { grid-template-columns: 1fr; }
             .activities-grid { grid-template-columns: 1fr; }
-            .location-inner { grid-template-columns: 1fr; }
+            .location-inner { grid-template-columns: 1fr; gap: 40px; }
             .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
             .header-nav { display: none; }
-            .highlights-bar { gap: 24px; }
+            .header { padding: 0 24px; }
         }
 
-        @media (max-width: 600px) {
-            .header { padding: 0 20px; }
-            .section-wrapper { padding: 60px 20px; }
+        @media (max-width: 640px) {
+            .section-wrap { padding: 60px 20px; }
             .activities-section { padding: 60px 20px; }
             .location-section { padding: 60px 20px; }
-            .rsvp-section { padding: 60px 20px; }
+            .rsvp-section { padding: 70px 20px; }
             .footer { padding: 50px 20px 24px; }
-            .footer-top { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .hero-title { font-size: 52px; }
+            .rsvp-section h2 { font-size: 38px; }
+            .hi-item { padding: 14px 20px; }
         }
     </style>
 </head>
@@ -683,13 +769,14 @@
 
     <!-- ANNOUNCEMENT BAR -->
     <div class="announcement-bar">
-        Save the Date &nbsp;·&nbsp; Sunday, 18 August 2025 &nbsp;·&nbsp;
-        <a href="#rsvp">RSVP Now — Spaces Are Limited</a>
+        Save the Date &ensp;·&ensp;
+        <em>Sunday, 18 August 2025</em>
+        &ensp;·&ensp; RSVP Today — Spaces Are Limited
     </div>
 
     <!-- HEADER -->
     <header class="header">
-        <a href="#" class="header-logo">Alfred<span>70</span></a>
+        <a href="#" class="header-logo">Alfred <i>&</i> Celebration</a>
         <nav>
             <ul class="header-nav">
                 <li><a href="#details">Event</a></li>
@@ -708,51 +795,61 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-tag">Special Occasion</span>
-            <h1 class="hero-title">You're<br>Invited<span>.</span></h1>
-            <p class="hero-subtitle">
-                Join us for an unforgettable evening celebrating<br>
-                Alfred's 70th Birthday — a night of elegance,<br>
-                laughter, and lifelong memories.
+            <div class="eyebrow-row">
+                <div class="eyebrow-rule"></div>
+                <span class="eyebrow-text">Special Occasion</span>
+                <div class="eyebrow-rule"></div>
+            </div>
+            <h1 class="hero-title">You're <i>Invited.</i></h1>
+            <p class="hero-event-name">Alfred's 70th Birthday Celebration</p>
+            <p class="hero-desc">
+                Join us for an unforgettable evening of elegance, laughter,
+                and lifelong memories as we celebrate a truly extraordinary milestone.
             </p>
             <div class="hero-cta">
-                <button class="btn-primary"
+                <button class="btn-gold"
                     onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
                     RSVP to Celebrate
                 </button>
-                <button class="btn-secondary"
+                <button class="btn-outline"
                     onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">
                     View Details
                 </button>
             </div>
         </div>
 
-        <!-- Floating date badge -->
-        <div class="hero-date-badge">
-            <div class="badge-month">August</div>
-            <div class="badge-day">18</div>
-            <div class="badge-year">2025</div>
-            <div class="badge-time">4:00 PM – 8:00 PM</div>
+        <!-- Floating date panel -->
+        <div class="hero-date-panel">
+            <div class="panel-label">Date of Celebration</div>
+            <div class="panel-day">18</div>
+            <div class="panel-month">August</div>
+            <div class="panel-year">2025</div>
+            <div class="panel-divider"></div>
+            <div class="panel-time">4:00 PM – 8:00 PM</div>
         </div>
     </section>
 
-    <!-- HIGHLIGHTS BAR -->
-    <div class="highlights-bar">
-        <div class="highlight-item"><span class="hi-icon">✨</span> Elegant Dinner</div>
-        <div class="highlight-item"><span class="hi-icon">🎼</span> Live Music</div>
-        <div class="highlight-item"><span class="hi-icon">📸</span> Photo Booth</div>
-        <div class="highlight-item"><span class="hi-icon">🎁</span> Special Moments</div>
-        <div class="highlight-item"><span class="hi-icon">🥂</span> Champagne Toast</div>
+    <!-- HIGHLIGHTS STRIP -->
+    <div class="highlights-strip">
+        <div class="hi-item"><span class="hi-dot">✦</span> Elegant Dinner</div>
+        <div class="hi-item"><span class="hi-dot">✦</span> Live Music</div>
+        <div class="hi-item"><span class="hi-dot">✦</span> Photo Booth</div>
+        <div class="hi-item"><span class="hi-dot">✦</span> Special Moments</div>
+        <div class="hi-item"><span class="hi-dot">✦</span> Champagne Toast</div>
     </div>
 
     <!-- DETAIL CARDS -->
     <section id="details">
-        <div class="section-wrapper">
-            <div class="section-header">
-                <span class="section-label">Event Details</span>
-                <h2 class="section-title">Everything You Need to Know</h2>
+        <div class="section-wrap">
+            <div class="section-head">
+                <div class="eyebrow-row">
+                    <div class="eyebrow-rule"></div>
+                    <span class="eyebrow-text">Event Details</span>
+                    <div class="eyebrow-rule"></div>
+                </div>
+                <h2>Everything You Need to <i>Know</i></h2>
             </div>
-            <div class="detail-cards">
+            <div class="detail-grid">
                 <div class="detail-card">
                     <span class="dc-icon">📅</span>
                     <div class="dc-label">Date</div>
@@ -777,36 +874,40 @@
 
     <!-- ACTIVITIES -->
     <section class="activities-section" id="activities">
-        <div style="max-width:1200px; margin:0 auto;">
-            <div class="section-header">
-                <span class="section-label">The Evening</span>
-                <h2 class="section-title">Join Us For</h2>
+        <div class="activities-inner">
+            <div class="section-head">
+                <div class="eyebrow-row">
+                    <div class="eyebrow-rule"></div>
+                    <span class="eyebrow-text">The Evening</span>
+                    <div class="eyebrow-rule"></div>
+                </div>
+                <h2>Join Us <i>For</i></h2>
             </div>
             <div class="activities-grid">
-                <div class="activity-item">
-                    <span class="ai-icon">✨</span>
-                    <div class="ai-text">
+                <div class="activity-card">
+                    <div class="activity-icon">✨</div>
+                    <div class="activity-text">
                         <h3>Elegant Dinner &amp; Dessert</h3>
                         <p>A curated multi-course dining experience celebrating Alfred's favourite flavours and finest moments.</p>
                     </div>
                 </div>
-                <div class="activity-item">
-                    <span class="ai-icon">🎼</span>
-                    <div class="ai-text">
+                <div class="activity-card">
+                    <div class="activity-icon">🎼</div>
+                    <div class="activity-text">
                         <h3>Live Music &amp; Memories</h3>
                         <p>Live performances and a journey through 70 years of extraordinary musical memories.</p>
                     </div>
                 </div>
-                <div class="activity-item">
-                    <span class="ai-icon">📸</span>
-                    <div class="ai-text">
+                <div class="activity-card">
+                    <div class="activity-icon">📸</div>
+                    <div class="activity-text">
                         <h3>Photo Booth Fun</h3>
-                        <p>Capture every laugh and smile with our professionally styled photo booth setup.</p>
+                        <p>Capture every laugh and smile with our professionally styled photo booth experience.</p>
                     </div>
                 </div>
-                <div class="activity-item">
-                    <span class="ai-icon">🎁</span>
-                    <div class="ai-text">
+                <div class="activity-card">
+                    <div class="activity-icon">🎁</div>
+                    <div class="activity-text">
                         <h3>Heartwarming Moments</h3>
                         <p>Share stories, laughter, and love with Alfred and all the wonderful people in his life.</p>
                     </div>
@@ -818,24 +919,32 @@
     <!-- LOCATION -->
     <section class="location-section" id="location">
         <div class="location-inner">
-            <div class="location-map-placeholder">
-                <span class="map-icon">🏛️</span>
-                <span>The Golden Hall</span>
+            <div class="map-placeholder">
+                <span>🏛️</span>
+                <p>The Golden Hall</p>
             </div>
             <div class="location-details">
-                <span class="section-label">Venue</span>
+                <div class="eyebrow-row">
+                    <div class="eyebrow-rule"></div>
+                    <span class="eyebrow-text">Venue</span>
+                </div>
                 <h2>The Golden Hall</h2>
                 <p class="loc-address">22 Elegant Street</p>
                 <p class="loc-city">Manchester, United Kingdom</p>
-                <a class="btn-dark" href="#">Get Directions →</a>
+                <button class="btn-gold">Get Directions →</button>
             </div>
         </div>
     </section>
 
     <!-- RSVP -->
     <section class="rsvp-section" id="rsvp">
-        <h2>Ready to Celebrate?</h2>
-        <p>Reserve your seat for Alfred's special evening.<br>We'd love to have you there.</p>
+        <div class="eyebrow-row">
+            <div class="eyebrow-rule"></div>
+            <span class="eyebrow-text">You're Invited</span>
+            <div class="eyebrow-rule"></div>
+        </div>
+        <h2>Ready to <i>Celebrate?</i></h2>
+        <p>Reserve your seat for Alfred's special evening.<br>We would love to have you there.</p>
         <button class="btn-rsvp">RSVP to Celebrate</button>
     </section>
 
@@ -843,8 +952,8 @@
     <footer class="footer">
         <div class="footer-top">
             <div>
-                <span class="footer-brand-logo">Alfred<span>70</span></span>
-                <p class="footer-brand-desc">
+                <a href="#" class="footer-logo">Alfred <i>&</i> Celebration</a>
+                <p class="footer-desc">
                     Celebrating seven decades of laughter, love, and extraordinary moments.
                     Join us as we honour a truly remarkable person and the life he has built.
                 </p>
@@ -878,7 +987,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2025 Alfred's 70th Birthday Celebration. With love.</span>
+            <span class="footer-copy">© 2025 Alfred's 70th Birthday Celebration. With love.</span>
             <div class="social-links">
                 <a class="social-link" href="#">f</a>
                 <a class="social-link" href="#">in</a>
